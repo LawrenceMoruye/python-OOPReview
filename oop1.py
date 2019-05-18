@@ -1,9 +1,9 @@
 class Employee:
 	def __init__(self,first,last,pay):
-		self.first=first
-		self.last=last
+		self.first=first#instance variable
+		self.last=last#instance variable
 		self.pay=pay
-		self.email=first+last+'@gmail.com'
+		self.email=first+last+'@gmail.com'#instance variable
 
 	def fullname(self):#all functions in a class take self as the first argument
 		return "{} {}".format(self.first,self.last)
