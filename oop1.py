@@ -15,12 +15,19 @@ class Employee:
 	def pay_rise(self):
 		self.pay=(self.pay*self.raise_amount)#initializsd class variable using self
 											#bcoz,pay can cange for different employees
-		
+	@classmethod
+	def from_string(cls,emp_str):
+		first,last,pay=emp_str.split("-")
+		return cls(first,last,pay)
+
+emp_class1="Lawi-morush-2010"
+new_emp=Employee.from_string(emp_class1)
+print(new_emp.email)
 
 print(Employee.no_employee)#prints 0,we've instantiated 0
 emp1=Employee("lawrence","moruye",10000)#creating first instance
 emp2=Employee("leony","kemmy",5000)#creating 2nd instance
-print(emp1.email)#obtain the name of employee1
 print(emp2.fullname())#name of employee 2
 print(Employee.fullname(emp1))#fullname of emp2
 print(Employee.no_employee)#prints 2,we've instantiated 2
+
