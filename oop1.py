@@ -20,6 +20,13 @@ class Employee:
 		first,last,pay=emp_str.split("-")
 		return cls(first,last,pay)
 
+	@staticmethod#creating a ststic method
+	def isworkday(day):
+		if day.weekday()==5 or day.weekday()==6:
+			return False
+		return True
+
+
 emp_class1="Lawi-morush-2010"
 new_emp=Employee.from_string(emp_class1)
 print(new_emp.email)
@@ -30,4 +37,8 @@ emp2=Employee("leony","kemmy",5000)#creating 2nd instance
 print(emp2.fullname())#name of employee 2
 print(Employee.fullname(emp1))#fullname of emp2
 print(Employee.no_employee)#prints 2,we've instantiated 2
+
+import datetime
+daycheck=datetime.date(1998,4,26)
+print(Employee.isworkday(daycheck))
 
