@@ -27,6 +27,43 @@ class Employee:
 		return True
 
 
+#creating a subclass ,it inherits from Employee
+class Developer(Employee):
+	def __init__(self,first,last,pay,pro_lang):
+		super().__init__(first,last,pay)
+		self.pro_lang=pro_lang
+
+
+#subclass 2,inherits from employee,showing employees supervised a manager
+class Manager(Employee):
+	def __init__(self,first,last,pay,employees=None):
+
+		super().__init__(first,last,pay)
+		if employees is None:
+			self.employees=[]
+		else:
+			self.employees=employees
+
+	def add_emp(self,emp):#function that adds an employee
+		if emp not in self.employees:
+			self.employees.append(emp)
+
+	def remove_emp(self,emp):#removes an employee from the list
+		if emp in self.employees:
+			self.employees.remove(emp)
+
+
+
+	def print_emp(self):#prints the number of employees a manager supervises
+		for emp in self.employees:
+			print("-->",emp.fullname())
+
+
+
+
+
+
+
 emp_class1="Lawi-morush-2010"
 new_emp=Employee.from_string(emp_class1)
 print(new_emp.email)
@@ -42,3 +79,9 @@ import datetime
 daycheck=datetime.date(1998,4,26)
 print(Employee.isworkday(daycheck))
 
+dev1=Developer("lawrence","Moruye",50000,"python")
+dev2=Developer("lawre","Morush",60000,"c++")
+mgr1=Manager("neckl","nma",12000,[dev1])
+print(mgr1.email)
+mgr1.add_emp(dev2)
+print(mgr1.print_emp())
